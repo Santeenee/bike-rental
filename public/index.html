@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bike Rentals | Home</title>
+
+		<link rel="stylesheet" href="style.css" />
+
+		<!-- inizialize firebase and firestore -->
+		<script
+			defer
+			src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"
+		></script>
+		<script
+			defer
+			src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"
+		></script>
+
+		<!-- firebase config and initialize -->
+		<script defer type="module">
+			const firebaseConfig = {
+				apiKey: 'AIzaSyCTvRYCvA8ZT5lG2bH_FnAkr6ST1V3eM_8',
+				authDomain: 'rentals-bike.firebaseapp.com',
+				projectId: 'rentals-bike',
+				storageBucket: 'rentals-bike.appspot.com',
+				messagingSenderId: '76257522475',
+				appId: '1:76257522475:web:23ebadc0e8acec68638b6e',
+			}
+			firebase.initializeApp(firebaseConfig)
+		</script>
+
+		<!-- my code -->
+		<script defer src="script.js"></script>
+
+		<!-- check if sdk is loaded correctly -->
+		<script defer>
+			document.addEventListener('DOMContentLoaded', function () {
+				const loadEl = document.querySelector('#load')
+
+				try {
+					let app = firebase.app()
+					let features = [
+						//'auth',
+						'firestore',
+					].filter(feature => typeof app[feature] === 'function')
+					loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`
+					loadEl.style.display = 'none'
+				} catch (e) {
+					console.error(e)
+					loadEl.textContent =
+						'Error loading the Firebase SDK, check the console.'
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1>BIKES & RATES</h1>
+			<p class="subtitle">Time to spin those wheels</p>
+
+			<nav>
+				<a href="orders.html">latest orders</a>
+			</nav>
+
+			<div id="preorder-bike-a-comparsa" class="form">
+				<ol>
+					<li>Choose bike below</li>
+					<li>Select how many bikes you want</li>
+					<li>Add To Cart</li>
+				</ol>
+
+				<div>
+					<h3>Cart (localStorage)</h3>
+					<div id="cart">
+						<!-- Javascript -->
+					</div>
+
+					<label for="days">Select days of rental</label>
+					<select name="days" id="days">
+						<option value="0.5">0.5</option>
+						<option value="1" selected>1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+
+					<p class="p-total">Total: <span id="total">0</span>€</p>
+
+					<button class="btn btn--secondary btn--cart" data-empty-cart>
+						Empty Cart
+					</button>
+
+					<button class="btn btn--primary btn--cart" data-checkout>
+						Checkout
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<p id="load">Loading&hellip;</p>
+
+			<!-- Javascript (bike list) -->
+		</main>
+
+		<footer>
+			<h2>Credits</h2>
+			<p>
+				Website crafted with pure CSS and JS by
+				<a href="https://GitHub.com/Santeenee">Santeenee</a>
+			</p>
+			<p>
+				<a
+					href="https://github.com/Santeenee/WEB-exercises/tree/master/JS/bike-project/bike-project-dom-exercise"
+				>
+					Project repository
+				</a>
+			</p>
+			<p>
+				Images by <a href="https://www.bikepsrentals.com/">bikepsrentals.com</a>
+			</p>
+		</footer>
+	</body>
+</html>
