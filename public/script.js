@@ -214,6 +214,7 @@ function printCatalogFromDb(doc) {
 
       let bikeImg = document.createElement('img')
       bikeImg.src = category[bike]['src']
+      bikeImg.loading = 'lazy' //loads images only when they are visible
 
       let bikeNameP = document.createElement('p')
       bikeNameP.classList.add('name-p')
